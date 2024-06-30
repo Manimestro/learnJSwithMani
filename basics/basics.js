@@ -23,5 +23,10 @@ Parentheses can be used to explicitly define the desired order of operations.
 can be double,single, and backticks
 for each char it uses --> 6bits
 
+!Operations (unary , binary)
+typeof "s" --> string typeof is uniary
+- (10) --> - is unary
+unary operates on a single value
+
 
 */
