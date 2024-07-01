@@ -28,5 +28,7 @@ typeof "s" --> string typeof is uniary
 - (10) --> - is unary
 unary operates on a single value
 
+!Booleons
+true/false
 
 */
