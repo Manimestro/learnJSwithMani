@@ -31,4 +31,7 @@ unary operates on a single value
 !Booleons
 true/false
 
+!Empty Values in JavaScript
+Undefied (uses my js Engine for unassinged or not returned )
+null (programmer use to set it )
 */
