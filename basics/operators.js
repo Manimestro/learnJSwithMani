@@ -23,4 +23,18 @@ console.log(false == 0); // → true
 console.log(null == undefined); // → true
 console.log("" === false); // → false
 console.log(0 === false); // → false
+
+! Short-Circuiting of Logical Operators
+console.log(null || "user"); // → "user"
+console.log("Agnes" || "user"); // → "Agnes"
+
+console.log(false && "user"); // → false
+console.log("Agnes" && "user"); // → "user"
+
+console.log(0 || 100); // → 100
+The ?? operator returns the value on its right only if the value on its left is null or undefined. 
+console.log(0 ?? 100); // → 0
+console.log(null ?? 100); // → 100
+
+
 */
