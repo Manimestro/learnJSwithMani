@@ -21,5 +21,12 @@ This is a group of bindings that are avaible to a programe in that context
 there are some initial bindings present in the environment (Node or browser)
 like keywords, window for browser , system defaults etc
 
-
+! Functions (args)
+lot of  default bindings values are functions 
+function is a code treated as a value 
+ex: console, promt
+console()--->Invoking, calling, or applying a function 
+arguments --> values we pass insdie that function 
+Function can make side effects(doing something out of scope of that function)
+or it simply returns a value without 
 */ 
