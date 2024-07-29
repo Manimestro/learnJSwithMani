@@ -29,4 +29,22 @@ console()--->Invoking, calling, or applying a function
 arguments --> values we pass insdie that function 
 Function can make side effects(doing something out of scope of that function)
 or it simply returns a value without 
+
+! Control Flow 
+stright flow like line after line exicuted 
+or excuting conditionally if if else statements 
+
+Loops
 */ 
+var i = 0
+while (i<5){
+    console.log(i)
+    i+=1
+}
+// 0,1,2,3,4
+var i = 0 
+do {
+    console.log(i)
+    i+=1
+}while(i<5);
+//0,1,2,3,4
