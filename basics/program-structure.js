@@ -79,3 +79,11 @@ for (var i=0;i<5;i=i+1){
     console.log(i)
 }
 //0,1,2,4
+
+// Updating bindings in shorthand 
+i +=2
+i *=2
+i -=2
+i /=2
+i %=2
+i **=2 
