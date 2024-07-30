@@ -34,7 +34,7 @@ or it simply returns a value without
 stright flow like line after line exicuted 
 or excuting conditionally if if else statements 
 
-Loops
+Loops (while, dowhile, For)
 */ 
 var i = 0
 while (i<5){
@@ -48,3 +48,34 @@ do {
     i+=1
 }while(i<5);
 //0,1,2,3,4
+
+// For loops offer a compact and readable way to manage loop initialization, condition-checking, and updating, all within one line
+
+for (var i=0;i<5;i=i+1){
+    console.log(i)
+}
+//0,1,2,4
+
+// breaking loops 
+
+/*
+break: Exits the loop immediately, stopping further iterations.
+Infinite Loops: Can occur if there is no termination condition or if the condition is always true.
+continue: Skips the rest of the loop body and proceeds to the next iteration.
+
+*/
+
+for (var i=0;i<5;i=i+1){
+    if(i===3){
+        break
+    }
+    console.log(i)
+}
+// 0,1,2
+for (var i=0;i<5;i=i+1){
+    if(i===3){
+        continue
+    }
+    console.log(i)
+}
+//0,1,2,4
