@@ -87,3 +87,19 @@ i -=2
 i /=2
 i %=2
 i **=2 
+
+// switch case (logically exicuting if else)
+
+var i = 1
+switch (i){
+    case typeof i ==="number":
+        console.log("num")
+        break;
+    case typeof i ==="string":
+        console.log("str")
+        break
+    default:
+        console.log("undefined")
+        break;
+}
+// break breaks at that line
