@@ -42,3 +42,23 @@ console.log(Object.keys(arr2))
 console.log(Object.values(arr2))
 console.log(arr2["1"])
 // arrays are also objects with keys as indexes
+
+// !Mutability
+//  data types like str, int, bool are immutable we cant change their content 
+let mydtype = "String"
+// we created a binding with name and value as string we can change the value to another but we cant tamper the value that is assigned 
+ 
+// Objects are mutable we can change the content inside an object
+const data1  = {
+    a:true,
+    b:false
+}
+const data2  = {
+    a:true,
+    b:false
+}
+const data3 = data1
+console.log(data1==data2) //false it wont check content it will check reference 
+console.log(data1==data3) //true both holds same refernce 
+data3.a = false
+console.log(data1.a)
