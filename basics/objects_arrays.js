@@ -62,3 +62,22 @@ console.log(data1==data2) //false it wont check content it will check reference
 console.log(data1==data3) //true both holds same refernce 
 data3.a = false
 console.log(data1.a)
+// Looping on Array 
+for (let i=0;i<arr.length;i++){
+    console.log(arr[i])
+}
+//shorthand
+for (let ele of arr){
+    console.log(ele)
+}
+// Common array methods
+var array1 = [1,2,3,4,2]
+var array2 = [1,2,3,4]
+array1.push(5)
+array1.pop()
+array1.shift()
+array1.unshift(1)
+array1.indexOf(2)
+array1.lastIndexOf(2)
+console.log(array1.slice(0))
+array1.concat(array1,array2)
