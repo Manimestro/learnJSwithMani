@@ -13,7 +13,7 @@ if(true){
     var globalBinding = 4
 }
 
-function local(){
+let local=function(){
     let bindF = 3 // local scoped (local to function)
 }
 // bindings defined with var has no block scope barrier 
@@ -29,3 +29,25 @@ function binding is just a name and value is a programe we can re-assign the bin
 and we can pass it to another function binding as variable 
 
 */
+
+// !Declaration notation
+
+FunctionBinding()
+
+function FunctionBinding(){
+    // this binding is moved top of the current scope 
+    // so that it can be called anywhere in the scope 
+    // its not part of top top-bottom flow control
+    console.log("hi")
+}
+
+// !arrow functions 
+// to write less code in robust way it was introduced 
+var arrowFunc = (a,b)=>{
+    return a+b
+}
+var arrowFunc = a=>{
+    return a
+}
+var arrowFunc = a => a
+
