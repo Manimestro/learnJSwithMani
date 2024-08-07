@@ -111,4 +111,9 @@ console.log(findSolution(24)); // → (((1 * 3) + 5) * 3)
   // keep a balance between usability and maintainability 
   // You won’t get any real work done—you’ll be too busy writing code that you never use.
   
-  
+  /*
+  !Functions and side effects
+  Pure functions --> returns value with producing or relaying on side effects 
+  function can be used to return value or to produce side effect or also both 
+  console.log()-->this function will always produce side effect
+  */

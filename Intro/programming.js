@@ -57,6 +57,6 @@ The same program can be written in long, complex ways or short, readable ways. T
  a standard was created to ensure all software supporting JavaScript worked the same way.
  This standard is called ECMAScript, and you can use "ECMAScript" and "JavaScript" interchangeably.
 
- https://eloquentjavascript.net/
+https://eloquentjavascript.net/code/
  This is our code sandbox (online js interpreture)
  */
