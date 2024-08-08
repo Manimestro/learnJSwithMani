@@ -81,3 +81,34 @@ function mutlipler(x){
 }
 const a = mutlipler(10)
 console.log(a(2))
+
+// !Recursion 
+// Function calling itself
+// for some cases loops are cheaper and efficient and some complex problems 
+// when will be branchs and find solution for that recursion is better
+// recursion uses callstack as  
+//example
+function findSolution(target) {
+    function find(current, history) {
+        console.log(history)
+        console.log(current)
+      if (current == target) {
+        return history;
+      } else if (current > target) {
+        return null;
+      } else {
+        return find(current + 5, `(${history} + 5)`) ??
+               find(current * 3, `(${history} * 3)`);
+      }
+    }
+    return find(1, "1");
+  }
+  
+console.log(findSolution(24)); // → (((1 * 3) + 5) * 3)
+
+  // !Growing Functions
+  // keep functions as simplier and reusable, dont make it complex just to make it reusable
+  // keep a balance between usability and maintainability 
+  // You won’t get any real work done—you’ll be too busy writing code that you never use.
+  
+  
