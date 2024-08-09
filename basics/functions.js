@@ -68,3 +68,16 @@ OptionalArgumentsFunc(1) //we  can call less args
 OptionalArgumentsFunc(1,2,3,4) //we  can call more args 
 
 /* 
+!closure
+
+function local bidings are re-created as they are called again and again 
+when we create a function in another function it holds its context bindings even the parent function is finshed 
+This is called Closure 
+when the function will remember bindings in that context it is created not when its called
+*/
+
+function mutlipler(x){
+    return (num)=>num*x
+}
+const a = mutlipler(10)
+console.log(a(2))
