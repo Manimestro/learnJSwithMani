@@ -51,3 +51,20 @@ var arrowFunc = a=>{
 }
 var arrowFunc = a => a
 
+//! The call stack
+// we saw line by line control flow of a programe 
+// when the function invocked the line excution starts on functions programe line 1 inside function 
+// as it is done it will continuew next line 
+// to remember this current context (which line to continue) it stores that context in a stack called callStack
+// so that stack is removed and context used to continue running the programe 
+// “out of stack space” or “too much recursion.” if call stack memory limit reached 
+
+//! Optional Arguments
+let OptionalArgumentsFunc = function(a,b,c,d=1){
+    console.log(a,b,c)
+};
+
+OptionalArgumentsFunc(1) //we  can call less args 
+OptionalArgumentsFunc(1,2,3,4) //we  can call more args 
+
+/* 
