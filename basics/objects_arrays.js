@@ -73,6 +73,8 @@ for (let ele of arr){
 // Common array methods
 var array1 = [1,2,3,4,2]
 var array2 = [1,2,3,4]
+array1["greet"] = "hello"
+console.log(array1)
 array1.push(5)
 array1.pop()
 array1.shift()
@@ -81,3 +83,19 @@ array1.indexOf(2)
 array1.lastIndexOf(2)
 console.log(array1.slice(0))
 array1.concat(array1,array2)
+
+// !Strings and their properties
+// we have methods and properties for strings
+// we cant addd properties to them because they are not objects
+const myname = "BOB"
+myname.greet = "hello"
+console.log(myname.greet) //undefined
+// strings have built in methods and properties common onces are
+myname.length
+myname.trim()
+myname.indexOf("B")
+const splitted = myname.split(" ")
+splitted.join("*")
+myname.repeat(10)
+const paddedNumber = String(7).padStart(8,"0")
+console.log("🚀 ~ paddedNumber:", paddedNumber)
