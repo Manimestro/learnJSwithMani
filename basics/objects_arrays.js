@@ -99,3 +99,15 @@ splitted.join("*")
 myname.repeat(10)
 const paddedNumber = String(7).padStart(8,"0")
 console.log("🚀 ~ paddedNumber:", paddedNumber)
+
+// !Rest parameters
+// accepting many args
+function printAll(...args){
+    console.log(args)
+}
+printAll(1,2,3,4)
+let parms = [1,2,3,4]
+printAll(...parms)
+
+let spreadArr = [...array1,...array2]
+let spreadObj = {...obj,...obj2}
