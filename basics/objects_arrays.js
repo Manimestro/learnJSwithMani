@@ -122,3 +122,9 @@ Math.ceil(10.2)
 Math.random()
 console.log(Math.PI)
 Math.round(10.4)
+
+// !Destructuring
+// we can decrutucture arrays and objects
+const [a,b] = [1,2]
+const {a} = {a:1}
+
