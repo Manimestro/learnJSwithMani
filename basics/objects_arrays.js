@@ -111,3 +111,14 @@ printAll(...parms)
 
 let spreadArr = [...array1,...array2]
 let spreadObj = {...obj,...obj2}
+
+// !The Math object
+// this object holds all the methods related math, to not to polute global namespace
+Math.min(1,2)
+Math.max(1,2)
+Math.sqrt(10)
+Math.floor(10.2)
+Math.ceil(10.2)
+Math.random()
+console.log(Math.PI)
+Math.round(10.4)
