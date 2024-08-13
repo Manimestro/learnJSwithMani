@@ -128,3 +128,19 @@ Math.round(10.4)
 const [a,b] = [1,2]
 const {a} = {a:1}
 
+//! Optional Property Access
+let data = {
+    name:"Joe",
+    address:{
+        city:"vzm" 
+    }
+}
+data = {
+    name:"Joe",
+    address:{
+        city:"vzm" 
+    }
+}
+data.address?.city // if you think a value is undefiend do it for next prop
+data?.list?.[1] // for square braces  
+data.address.method?.() // if you think a value is undefiend do it for next method
