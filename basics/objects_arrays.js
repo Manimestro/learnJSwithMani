@@ -125,8 +125,8 @@ Math.round(10.4)
 
 // !Destructuring
 // we can decrutucture arrays and objects
-const [a,b] = [1,2]
-const {a} = {a:1}
+const [x,y] = [1,2]
+const {z} = {a:1}
 
 //! Optional Property Access
 let data = {
@@ -144,3 +144,18 @@ data = {
 data.address?.city // if you think a value is undefiend do it for next prop
 data?.list?.[1] // for square braces  
 data.address.method?.() // if you think a value is undefiend do it for next method
+
+// !JSON
+// this is used to serialize an object into a JSON (a text format to send out of machine)
+// objects stores references of other objects so it is like octopas of tantacles holding either direct values or refrences 
+// so while sending this objects out of machine we need to send it in a text 
+const serialized = JSON.stringify({
+    name:"mani",
+    days:[1,2,[4,5]],
+    address:{
+        city:"vzm"
+    }
+})
+// here days stores a refrences of that array and address stores ref of object
+// stringify get all the references and make it in a json to use
+const deserialized = JSON.parse(serialized)
