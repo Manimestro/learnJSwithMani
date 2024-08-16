@@ -40,3 +40,62 @@ let finder = {
 // arrow function doesnt have its own this object so its takes its parent scope
 // regular functions have its own this object 
 // functions called as methods holds the object value in this 
+
+// ! Prototype 
+
+// prototype is a special property. it is used to abstraect the properties and reuse in differnt objects
+// when property is missing in a object its checks for its proptype and ther if misses checks for prototype protypes properties ans so on 
+let emptyObject = Object()
+// or 
+emptyObject = {
+    
+}
+
+emptyObject.toString() // this method came from its prototype object
+// object Proptype is by default setted to Object.prototype so it has toString method and uses it 
+Object // it is a Object class 
+String // it is string Object's class
+Boolean // it is boolean Objects's class
+Number //  it is number Object's class
+console.log(Object.getPrototypeOf(emptyObject)) // --> this methods returns protype of any object
+console.log(Object.getPrototypeOf(emptyObject)==Object.prototype) // true
+console.log(Object.getPrototypeOf("String")==String.prototype) // true
+console.log(Object.getPrototypeOf(true)==Boolean.prototype) // true
+console.log(Object.getPrototypeOf(1)==Number.prototype) // true
+
+// all the prototypes chains end up with Object.prototype
+console.log(Object.getPrototypeOf(Object.getPrototypeOf("String"))==Object.prototype)
+
+var book1 = {
+    author:"Mani",
+    name:"Js",
+    bioData:()=>{
+        console.log(
+            `bio of ${this.author}`
+        )
+    }
+}
+
+var book2 = {
+    author:"Mani",
+    name:"Git"
+}
+
+// to abstract bio and author into a another object and reuse
+
+let Book = {
+    author:"Mani",
+    bioData:function(){
+        console.log(
+            `bio of ${this.author}`
+        )
+    }
+}
+
+var book1 = Object.create(Book)
+Object.assign(book1,{ name:"Js",})
+var book2 = Object.create(Book)
+Object.assign(book1,{ name:"Git",})
+
+console.log(book1.author)
+book1.bioData()
