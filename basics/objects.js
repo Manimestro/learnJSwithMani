@@ -189,3 +189,16 @@ every function defined with function keyword has its own this context which is e
 every class defined with class keyword , the functions inside in it are the methods not the normal functions
 
 */
+// Difining default properties
+
+class Car {
+    max_speed = 200 
+    constructor(speed){
+        this.speed = speed
+    }
+}
+
+let car1 = Car(40)
+//first  max_speed is assigned to instace of class 
+// then construction function called 
+// assigns speed property 
