@@ -198,7 +198,21 @@ class Car {
     }
 }
 
-let car1 = Car(40)
+let car1 =new Car(40)
 //first  max_speed is assigned to instace of class 
 // then construction function called 
 // assigns speed property 
+
+//! Private Properties
+class PrivateCar {
+    #max_speed = 100 
+    constructor(speed){
+        this.speed = speed
+        this.mspeed = this.#getMaxSpeed()
+    }
+    #getMaxSpeed(){
+        return this.#max_speed +"``"
+    }
+}
+let car2 =new PrivateCar(40)
+console.log(car2.getMaxSpeed()) //error
