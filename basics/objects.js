@@ -215,4 +215,33 @@ class PrivateCar {
     }
 }
 let car2 =new PrivateCar(40)
-console.log(car2.getMaxSpeed()) //error
+
+//! Overriding derived properties
+// the parent node can be overwriten with children node in prototype chain 
+
+function Child(){
+    this.name = "Child"
+}
+Child.prototype.toString = function(){
+    return "Dummy method"
+}
+const child =new Child()
+const child2 =new Child()
+child2.toString = ()=>{
+    return "Dummy method of child 2 "
+}
+const res = child.toString.call(child)
+const res2 = child2.toString()
+console.log(res)
+console.log(res2)
+
+// so we can override some default methods for some exceptional objects
+
+
+// Array overwritten the toString method of Object toString method
+
+console.log(Array.prototype.toString == Object.prototype.toString) //False
+console.log(Array.prototype.toString == Array.toString) //False
+
+console.log(Array.prototype.toString.call([1,2,3])) // it is same as .join(',')
+console.log( Object.prototype.toString.call([1,2,3]))
