@@ -245,3 +245,18 @@ console.log(Array.prototype.toString == Array.toString) //False
 
 console.log(Array.prototype.toString.call([1,2,3])) // it is same as .join(',')
 console.log( Object.prototype.toString.call([1,2,3]))
+
+// !MAPS (data structure)
+// unlike objects we can use any datatypes as keys even mutable datastructures too
+// objects 
+let obj = {
+    key:"val"
+}
+console.log("toString" in obj) // this is pitfall
+const map = new Map()
+let key = {1:1}
+map.set(key,1)
+map.set("key","val")
+console.log(map)
+console.log(map.get(key))
+console.log(map.has(key))
