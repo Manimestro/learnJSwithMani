@@ -260,3 +260,34 @@ map.set("key","val")
 console.log(map)
 console.log(map.get(key))
 console.log(map.has(key))
+
+//! Polymorphism
+// it is a concept that allows different types of objects to be treated as instances of the same class through a common interface
+
+let str = 'string'
+console.log(String(str))
+// here String directly converts by default for premitive values 
+
+let arr = [1,2,3]
+console.log(String(arr))
+// here String calls Array.prototype.toString method for premitive string
+
+let obj2 = {
+    a:"1"
+}
+console.log(String(obj2))
+// here String calls Object.prototype.toString method for premitive string
+// String using differect level of chain methods  according to the input type 
+// this is polymorphic behaviour 
+// same for map 
+Array.prototype.map.call({
+    "length":2,
+    "0":"name",
+    "1":"age",
+    "gender":"M"
+},ele=>console.log(ele))
+
+// here map method checks if the object has keys like numbers and length property 
+// and  it is uses those keys as indexes and using them as arrays
+// Here Map follows Polymorphism and works for arrays and also objects
+// if it follows common interface then it will work 
