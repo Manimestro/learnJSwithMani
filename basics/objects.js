@@ -291,3 +291,45 @@ Array.prototype.map.call({
 // and  it is uses those keys as indexes and using them as arrays
 // Here Map follows Polymorphism and works for arrays and also objects
 // if it follows common interface then it will work 
+
+//! Getters, setters, and statics
+// Interfaces or classes which have plain properties which requires a computation
+
+const m =new Map()
+m.size
+class MyMap{
+    constructor(obj){
+        this.obj = obj
+    }
+    get size() {
+        return Object.keys(this.obj).length
+    }
+    set obj2(obj){
+        this.obj = obj
+    }
+}
+
+const myMap =new MyMap({a:1})
+myMap.obj2 = {1:2,3:4}
+console.log(myMap.size)
+//Even properties that are accessed directly may hide a method call
+
+class Temperature {
+    constructor(celsius) {
+      this.celsius = celsius;
+    }
+    get fahrenheit() {
+        return this.celsius * 1.8 + 32;
+        }
+    set fahrenheit(value) {
+      this.celsius = (value - 32) / 1.8;
+    }
+    static fromFahrenheit(value) {
+      return new Temperature((value - 32) / 1.8);
+ } }
+
+ // get --> method to run while calling a prop with no args class.name
+ // set --> method to run while calling a prop with single arg class.name = "mani"
+ // static --> method that attached to class constructor, not to prototype 
+
+ 
