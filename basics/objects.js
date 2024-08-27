@@ -332,4 +332,25 @@ class Temperature {
  // set --> method to run while calling a prop with single arg class.name = "mani"
  // static --> method that attached to class constructor, not to prototype 
 
+ //! Symbols 
+ const symbol = Symbol("symbol") // always creates a unique value and we can access this with text we provide
+ const symbol2 = Symbol("symbol")
+ const symbol3 = Symbol("symbol")
+ console.log(symbol==Symbol("symbol")) //false
  
+//using symbol 
+let normalArr = [1,2,3,4]
+normalArr[symbol] = "symbol1"
+normalArr[symbol2] = "symbol2"
+normalArr[symbol3] = "symbol3"
+
+console.log(normalArr,normalArr["length"], normalArr.symbol)
+console.log(normalArr["symbol"],normalArr[symbol],normalArr[symbol2],normalArr[symbol3])
+
+const hikingObj = {
+    length:"2",
+    "name":"mani",
+    "0":1,
+ }
+ 
+Array.prototype.forEach.call(hikingObj,ele=>console.log(ele))
