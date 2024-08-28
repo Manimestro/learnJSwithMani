@@ -354,3 +354,89 @@ const hikingObj = {
  }
  
 Array.prototype.forEach.call(hikingObj,ele=>console.log(ele))
+
+
+/*
+! The iterator interface
+
+*/
+const objForIteration = {
+    a:1,
+    b:2,
+    length:3,
+    "0":1
+}
+
+const arrForIteration = [1,2,3]
+// Arrays have symbol.Iterator property 
+// this property should be present in order to iterate any object using for/of or for/in on any object
+console.log(Object.getOwnPropertySymbols(Array.prototype))
+for (let i in arrForIteration){
+    console.log(i)
+}
+for (let val of arrForIteration){
+    console.log(val)
+}
+
+const strForIteration = "Mani"
+
+console.log(Object.getOwnPropertySymbols(String.prototype))
+
+for (let val of strForIteration){
+    console.log(val)
+}
+
+//Behind the scene 
+let strIterattor = strForIteration[Symbol.iterator]()
+// the symbol.iterator method returns a iterator which have next method 
+//calling it will give value,done properties
+for (let i = strIterattor.next(); !i.done; i=strIterattor.next()){
+    console.log(i.value)
+}
+
+class List {
+    constructor(value, rest) {
+      this.value = value;
+      this.rest = rest;
+    }
+  
+    get length() {
+      return 1 + (this.rest ? this.rest.length : 0);
+    }
+  
+    static fromArray(array) {
+      let result = null;
+      for (let i = array.length - 1; i >= 0; i--) {
+        result = new this(array[i], result);
+      }
+      return result;
+    }
+  }
+  
+  class ListIterator {
+    constructor(list) {
+      this.list = list;
+    }
+  
+    next() {
+      if (this.list == null) {
+        return {done: true};
+      }
+      let value = this.list.value;
+      console.log(value,"value")
+      this.list = this.list.rest;
+      return {value, done: false};
+    }
+  }
+
+List.prototype[Symbol.iterator] = function(){
+    return new ListIterator(this)
+}
+const listObj = List.fromArray([1,2,3])
+console.log(listObj)
+for (let ele of listObj){
+
+}
+
+// the spread operator works same as all the iterable objects
+let strToArr = [..."hello"] // ["h","e","l","l","o"]
