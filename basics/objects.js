@@ -395,15 +395,19 @@ for (let i = strIterattor.next(); !i.done; i=strIterattor.next()){
 }
 
 class List {
+    #privateLength
     constructor(value, rest) {
       this.value = value;
       this.rest = rest;
+      this.#privateLength = this.lengthComputated
     }
   
-    get length() {
+    get length(){
+        return this.#privateLength
+    }
+    get lengthComputated() {
       return 1 + (this.rest ? this.rest.length : 0);
     }
-  
     static fromArray(array) {
       let result = null;
       for (let i = array.length - 1; i >= 0; i--) {
@@ -433,10 +437,40 @@ List.prototype[Symbol.iterator] = function(){
     return new ListIterator(this)
 }
 const listObj = List.fromArray([1,2,3])
-console.log(listObj)
+console.log(listObj.length,"listObj.length")
 for (let ele of listObj){
 
 }
 
 // the spread operator works same as all the iterable objects
 let strToArr = [..."hello"] // ["h","e","l","l","o"]
+
+/*
+! Inheritance
+
+JavaScript’s prototype system makes it possible to create a new class, much like the old class, 
+but with new definitions for some of its properties
+This is called Inheritance in OOPS
+
+
+*/
+class LengthList extends List {
+    #length;
+  
+    constructor(value, rest) {
+      super(value, rest);
+      this.#length = super.length;
+    }
+  
+    get length() {
+      return this.#length;
+    }
+  }
+
+let instofList  = LengthList.fromArray([1, 2, 3])
+console.log(instofList.length)
+// here for length property we dont have to go through recurrsion and get length 
+// we store the length in a private property and return via length method 
+LengthList // child class
+List // super class
+// we can call super keyword 
