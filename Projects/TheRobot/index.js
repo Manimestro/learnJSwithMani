@@ -81,10 +81,10 @@ let object = Object.freeze({value: 5});
  //! For automation picking an random place to go and check if we can deliver 
  
  // a function that takes vilage state and calls the robot function to five a direction to move 
- function runRobot(state,robot,memory){
+ function runRobot(state,robot,memory=[]){
     let c = 0
     for (let turn=0;;turn++){
-        if(state.parcels.length<=0 ){
+        if(state.parcels.length<=0){
             console.log(`Done in ${turn} turns`)
             break
         }
@@ -117,12 +117,32 @@ let object = Object.freeze({value: 5});
         do{
             place = randomPick(Object.keys(roadGraph))
         }while(place==address);
-        parcels.push({place,parcels})
+        parcels.push({place,address})
     }
     return new VillageState("Post Office", parcels)
  }
  
-let iState = VillageState.random()
-let robot = runRobot(iState, randomRobot)
+let someRandomState = VillageState.random()
+// let robot = runRobot(someRandomState, randomRobot)
 // it will take so long to deliver 
 
+// if we goes to all posible places in a quick way  we can deliver parcels by just going twice in that way 
+
+// this route covers all the places in quick 
+const mailRoute = [
+    "Alice's House", "Cabin", "Alice's House", "Bob's House", "Town Hall", "Daria's House", "Ernie's House",
+    "Grete's House", "Shop", "Grete's House", "Farm", "Marketplace", "Post Office"
+    ];
+    
+function routeRobot(state , memory=[]){
+    if(memory.length<=0){
+        memory = mailRoute
+    }
+    console.log(memory[0],memory.slice(1))
+    return {
+        direction:memory[0],
+        memory:memory.slice(1)        
+    }
+}
+console.log(someRandomState,"someRandomState")
+runRobot(someRandomState,routeRobot)
