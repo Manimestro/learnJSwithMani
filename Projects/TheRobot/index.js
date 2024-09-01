@@ -84,13 +84,13 @@ let object = Object.freeze({value: 5});
  function runRobot(state,robot,memory=[]){
     for (let turn=0;;turn++){
         if(state.parcels.length<=0){
-            console.log(`Done in ${turn} turns`)
+            // console.log(`Done in ${turn} turns`)
             return turn
         }
         let action = robot(state,memory);
         state = state.move(action.direction)
         memory = action.memory;
-        console.log(`Moved to ${action.direction} ${state.parcels.length}`)
+        // console.log(`Moved to ${action.direction} ${state.parcels.length}`)
         
     }
  }
@@ -137,7 +137,7 @@ function routeRobot(state , memory=[]){
     if(memory.length<=0){
         memory = mailRoute
     }
-    console.log(memory[0],memory.slice(1))
+    // console.log(memory[0],memory.slice(1))
     return {
         direction:memory[0],
         memory:memory.slice(1)        
@@ -190,4 +190,33 @@ function compareRobots(robot1, robot2){
     console.log(`Robot1 ${robot1Turns/100} Robot2 ${robot2Turns/100}`) 
 }
 
-compareRobots(routeRobot, goalOrientedRobot)
+
+// Robot efficiency
+
+// robot that finds the route for shortest possible place 
+function lazyRobot({place, parcels}, route) {
+    if (route.length == 0) {
+        
+      let routes = parcels.map(parcel => {
+        if (parcel.place != place) {
+          return {route: findRoute(roadGraph, place, parcel.place),
+                  pickUp: true};
+        } else {
+          return {route: findRoute(roadGraph, place, parcel.address),
+                  pickUp: false};
+        }
+      });
+
+      function score({route, pickUp}) {
+        return (pickUp ? 0.5 : 0) - route.length;
+      }
+      route = routes.reduce((a, b) => score(a) > score(b) ? a : b).route;
+    }
+  
+    return {direction: route[0], memory: route.slice(1)};
+  }
+
+compareRobots(goalOrientedRobot, lazyRobot)
+
+
+
