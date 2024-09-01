@@ -65,17 +65,17 @@ let first = new VillageState(
 )
 let next = first.move("Alice's House")
 
-console.log(next.place)
+// console.log(next.place)
 
-console.log(next.parcels)
+// console.log(next.parcels)
 
-console.log(first.place)
+// console.log(first.place)
 
 // Persistent Data (data structures that wont change over time)
 
 let object = Object.freeze({value: 5});
  object.value = 10;
- console.log(object.value);
+//  console.log(object.value);
  // → 5
  
  //! For automation picking an random place to go and check if we can deliver 
@@ -145,4 +145,34 @@ function routeRobot(state , memory=[]){
     }
 }
 console.log(someRandomState,"someRandomState")
-runRobot(someRandomState,routeRobot)
+// runRobot(someRandomState,routeRobot)
+
+// function to find a shortest route between two places
+function findRoute(graph, from, to){
+    let work = [{at:from, route:[]}]
+    for (let i=0; i<work.length; i++){
+        let {at,route} = work[i]
+        for (let place of graph[at]){
+            if(place==to) return route.concat(place)
+            if (!work.some(w=>w.at ==place)){
+                work.push({at:place, route:route.concat(place)})
+            }
+            // console.log(work)
+        }
+    }
+}
+
+//  robot that memorize a route or calls findRoute to get route 
+function goalOrientedRobot({place,parcels}, route){
+    if(route.length==0){
+        let parcel = parcels[0]
+        if(parcel.place != place){
+            route = findRoute(roadGraph, place, parcel.place)
+        }else{
+            route = findRoute(roadGraph, place, parcel.address)
+        }
+    }
+    return {direction:route[0], memory:route.slice(1)}
+}
+
+runRobot(someRandomState, goalOrientedRobot)
