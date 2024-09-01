@@ -82,17 +82,15 @@ let object = Object.freeze({value: 5});
  
  // a function that takes vilage state and calls the robot function to five a direction to move 
  function runRobot(state,robot,memory=[]){
-    let c = 0
     for (let turn=0;;turn++){
         if(state.parcels.length<=0){
             console.log(`Done in ${turn} turns`)
-            break
+            return turn
         }
         let action = robot(state,memory);
         state = state.move(action.direction)
         memory = action.memory;
-        c++
-        console.log(`Moved to ${action.direction} ${state.parcels.length} ${c}`)
+        console.log(`Moved to ${action.direction} ${state.parcels.length}`)
         
     }
  }
@@ -119,7 +117,8 @@ let object = Object.freeze({value: 5});
         }while(place==address);
         parcels.push({place,address})
     }
-    return new VillageState("Post Office", parcels)
+    let startPlace = randomPick(Object.keys(roadGraph));
+    return new VillageState(startPlace, parcels)
  }
  
 let someRandomState = VillageState.random()
@@ -176,3 +175,19 @@ function goalOrientedRobot({place,parcels}, route){
 }
 
 runRobot(someRandomState, goalOrientedRobot)
+
+// lets find the best robot from all the three
+
+function compareRobots(robot1, robot2){
+    let robot1Turns = 0
+    let robot2Turns = 0 
+    let  i=0;
+    for (i;i<100;i++){     
+        let task = VillageState.random(randomPick(Math.ceil(Math.random())*10))
+        robot1Turns+=runRobot(task,robot1)
+        robot2Turns+=runRobot(task,robot2)
+    } 
+    console.log(`Robot1 ${robot1Turns/100} Robot2 ${robot2Turns/100}`) 
+}
+
+compareRobots(routeRobot, goalOrientedRobot)
