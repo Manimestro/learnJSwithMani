@@ -78,4 +78,51 @@ let object = Object.freeze({value: 5});
  console.log(object.value);
  // → 5
  
+ //! For automation picking an random place to go and check if we can deliver 
  
+ // a function that takes vilage state and calls the robot function to five a direction to move 
+ function runRobot(state,robot,memory){
+    let c = 0
+    for (let turn=0;;turn++){
+        if(state.parcels.length<=0 ){
+            console.log(`Done in ${turn} turns`)
+            break
+        }
+        let action = robot(state,memory);
+        state = state.move(action.direction)
+        memory = action.memory;
+        c++
+        console.log(`Moved to ${action.direction} ${state.parcels.length} ${c}`)
+        
+    }
+ }
+ 
+ // Random pick from an array
+ function randomPick(array){
+    let choice = Math.floor(Math.random()*array.length)
+    return array[choice]
+ }
+ 
+ // Robot picking a random reachable destination of given place 
+ function randomRobot(state){
+    return {direction:randomPick(roadGraph[state.place])}
+ }
+ 
+ // a static method to generate a random place and parcels to deliver
+ VillageState.random = function(parcelCount = 5){
+    let parcels = [];
+    for (let i=0; i<parcelCount;i++){
+        let address = randomPick(Object.keys(roadGraph));
+        let place;
+        do{
+            place = randomPick(Object.keys(roadGraph))
+        }while(place==address);
+        parcels.push({place,parcels})
+    }
+    return new VillageState("Post Office", parcels)
+ }
+ 
+let iState = VillageState.random()
+let robot = runRobot(iState, randomRobot)
+// it will take so long to deliver 
+
