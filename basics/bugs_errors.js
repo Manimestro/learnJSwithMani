@@ -36,3 +36,13 @@ function sum(a,b){
     return a+b
 }
 // commenting types is usefull 
+
+//* Testing
+// Testing means test the programe before we find the bugs on prod 
+// testing programe wiht another programe is automation testing 
+// writing unit test functions for all the functions is difficult at first but we can reuse it everytime 
+
+//* Debugging
+// looking into to the code when we find our programe is not working as it should 
+// use debugger tools and console logs 
+
