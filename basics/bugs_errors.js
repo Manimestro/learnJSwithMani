@@ -26,3 +26,13 @@ function Person(name){
 let man = Person("Mani")
 console.log(name)
 // using strict mode in functions the this context will become undefined if the function not called correctly
+
+//* Types 
+// The types in javascript are only checked on exicution time
+// sometimes the types are converted to another types on excuting a expersion 
+
+// (a:number, b:number )=> number
+function sum(a,b){
+    return a+b
+}
+// commenting types is usefull 
