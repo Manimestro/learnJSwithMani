@@ -46,3 +46,9 @@ function sum(a,b){
 // looking into to the code when we find our programe is not working as it should 
 // use debugger tools and console logs 
 
+//* Error propagation
+// Error may occur by any means, some errors like user inputs and network failures , we need to handle it in the code 
+// we cant do anything expect that 
+// for that cases if can return some special value like error happend
+//  (Error) ? {error true }:{value}
+// for this caller needs to check and handle again 
