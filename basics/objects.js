@@ -474,3 +474,61 @@ console.log(instofList.length)
 LengthList // child class
 List // super class
 // we can call super keyword 
+
+//! Example Problem
+
+class Iterators {
+    
+    constructor(arr){
+      this.index = 0 
+      this.arr = arr
+    }
+    next(){
+
+      if(this.index>=this.arr.length){
+        return {done:true}
+      }
+      let res =  (
+        {
+        done:false,
+        value:this.arr[this.index]
+      }
+      )
+      this.index+=1
+      return res
+    }
+  }
+  
+  class Group extends Iterators {
+    #members = [];
+    add(value) {
+      if (!this.has(value)) {
+        this.#members.push(value);
+      }
+    }
+  
+    delete(value) {
+      this.#members = this.#members.filter(v => v !== value);
+    }
+  
+    has(value) {
+      return this.#members.includes(value);
+    }
+  
+    static from(collection) {
+      let group = new Group(collection);
+      for (let value of collection) {
+        group.add(value);
+      }
+      return group;
+    }
+    [Symbol.iterator](){
+        return ({
+            next:this.next.bind(this)
+        })
+  }
+}
+// const grp = new Group()
+for (let value of Group.from(["a", "b", "c"])) {
+    console.log(value);
+  }
