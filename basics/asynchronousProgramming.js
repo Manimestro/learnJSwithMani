@@ -20,3 +20,60 @@
     //     },1000) 
     // },1000)
 // so setTimeout is one of built-in async callback model function but doing so many things will make callback hell
+
+//* Promises
+/*
+    async functions returns a Promise object (which contains result in future)  
+    we can create promises with async funtions that resolve after sometime or we can create promise with direct values
+*/
+
+// resolve immediatly 
+let ten = Promise.resolve(10)
+ten.then(val=>console.log(val))
+
+// resolve later
+// promise constructor takes a function as arg
+const setTimeOutAsPromise = new Promise((resolve)=>{
+    setTimeout(()=>{
+        // console.log("@ 1sec")
+        resolve("resolved")
+    },5000)
+})
+
+// setTimeOutAsPromise.then(res=>{
+//      new Promise((resolve)=>{
+//         setTimeout(()=>{
+//             console.log("@ 1sec")
+//             resolve("resolved")
+//         },5000)
+//     })
+// }).then(res=>{
+//      new Promise((resolve)=>{
+//         setTimeout(()=>{
+//             console.log("@ 1sec")
+//             resolve("resolved")
+//         },5000)
+//     })
+// }).then(res=>{
+//      new Promise((resolve)=>{
+//         setTimeout(()=>{
+//             console.log("@ 1sec")
+//             resolve("resolved")
+//         },5000)
+//     })
+// }).then(res=>{
+//     console.log(res)
+// })
+
+// we can apply then method to promise multiple times
+
+let fetch =()=> new Promise(resolve=>{
+    setTimeout(()=>{
+        resolve(JSON.stringify({result:"None"}))
+    },5000)
+})
+fetch().then(data=>{
+    return JSON.parse(data) // this is a sync operation but still we can use it as instatly resolved promise
+}).then(data=>{
+    console.log(data)
+})
