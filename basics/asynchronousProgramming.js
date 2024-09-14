@@ -77,3 +77,32 @@ fetch().then(data=>{
 }).then(data=>{
     console.log(data)
 })
+
+
+//* Failure
+/*
+    If the async operation fails with an expection its hard in callback method to handle 
+    we have to pass the error reason to second arg when an expection occurs but in promise method if the promised is failed it will be rejected 
+    and rejected reason can be pulled by catch method 
+*/
+
+// we can reject a promsie by calling the reject method 
+
+Promise.reject("rejected").then((res)=>{
+    console.log(res)
+    // this handler wont exicute 
+}).catch(err=>{
+    console.log(err)
+    // this will exicute
+})
+
+new Promise((_,reject)=>{
+    reject("Reject")
+}).then((res) => {
+    console.log("🚀 ~ newPromise ~ res:", res)
+    // this handler wont exicute 
+},err => {
+    console.log("🚀 ~ newPromise ~ err:", err)
+    // this will exicute
+})
+// or we can pass the error handler as a second arg to then 
