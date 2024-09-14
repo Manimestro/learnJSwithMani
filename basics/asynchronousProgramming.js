@@ -106,3 +106,63 @@ new Promise((_,reject)=>{
     // this will exicute
 })
 // or we can pass the error handler as a second arg to then 
+
+//* Password craker function 
+// a password auth model that 
+// - accepts 6 digit string 
+// - it waits for the next input if prev input is correct
+// - it throws error if any digit is wrong in 20ms
+
+
+class PasswordChecker{
+    #password = "189541"
+    constructor(){
+        this.Index = 0 
+    }
+    checkDigit(digit){
+        return new Promise((res,rej)=>{
+           setTimeout(()=>{
+            if ((this.#password[this.Index] == digit && this.Index === this.#password.length-1)){
+                return res("success")
+            }
+  
+            if (!(this.#password[this.Index] == digit)){
+                return rej("Wrong Password")
+            }
+            this.Index++
+           },20) 
+        })
+    }
+}
+
+function EnterPassword(promise, time){
+    return new Promise((res,rej)=>{
+        promise.then(res,rej)
+        setTimeout(()=>{rej("Timeout")}, 50)
+    })
+}
+
+function crackPassword(){
+    console.log("cracking password using rec")
+    let passwordChecker =new PasswordChecker()
+    function tryDigit(password,digit){
+        return EnterPassword(passwordChecker.checkDigit(digit), 50).then(
+            res=>{
+                return password
+            }
+        ).catch(err=>{
+             if (err == "Timeout"){
+                tryDigit(password+digit,0)
+            }
+            else if (err == "Wrong Password" && digit<9){
+                tryDigit(password, digit+1)
+            }
+            else{
+                console.log(err,"err",digit, password)
+                throw err
+            }
+        })
+    }
+    return tryDigit("",0)
+}
+crackPassword().then(console.log)
