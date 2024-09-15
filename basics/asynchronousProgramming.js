@@ -70,7 +70,7 @@ const setTimeOutAsPromise = new Promise((resolve)=>{
 let fetch =()=> new Promise(resolve=>{
     setTimeout(()=>{
         resolve(JSON.stringify({result:"None"}))
-    },5000)
+    },1000)
 })
 fetch().then(data=>{
     return JSON.parse(data) // this is a sync operation but still we can use it as instatly resolved promise
@@ -165,4 +165,27 @@ function crackPassword(){
     }
     return tryDigit("",0)
 }
-crackPassword().then(console.log)
+
+// Async functions
+async function crackPasswordwithSudoSync(){
+    console.log("cracking password using rec")
+    let passwordChecker =new PasswordChecker()
+
+    for (let password = "";;){
+        for (let digit =0 ; ;digit++){
+            try{
+                await EnterPassword(passwordChecker.checkDigit(digit), 50)
+                return password+=digit
+            }catch(err){
+                if (err == "Timeout"){
+                    password+=digit
+                    break
+                }
+                else if (digit===9){
+                    throw err
+                }
+            }
+        }
+    }
+}
+crackPasswordwithSudoSync().then(console.log)
