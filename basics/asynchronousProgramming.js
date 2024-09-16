@@ -189,3 +189,27 @@ async function crackPasswordwithSudoSync(){
     }
 }
 crackPasswordwithSudoSync().then(console.log)
+
+//* Generators
+// These are kind of helper function to create iterators 
+// yielded value is the value of next method it creates it own internal state to hold iterator object on every yield
+// when we yeild, the function will be frozen until we call the next method of that generator
+function* powers(n){
+    for (let current =n; ; current*=n){
+        yield current
+        console.log("done",current)
+    }
+}
+
+const gen = powers(3)
+
+console.log(gen.next()); 
+console.log(gen.next());
+console.log(gen.next()); 
+
+for (let i of powers(3)){
+    if (i>50){
+        break
+    }
+    console.log(i)
+}
