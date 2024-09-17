@@ -213,3 +213,42 @@ for (let i of powers(3)){
     }
     console.log(i)
 }
+
+//* The event loop
+
+// Which is a continues loop that run in backround while javascript eninge starts
+// - CallStack 
+// - Micro task queue
+// - Task queue 
+
+// while the event loop continuesly checks for the these and exicutes in an order 
+// js is a single threaded programing language so it things are exicuted one by one
+
+// try {
+//     setTimeout(()=>{
+//         throw new Error("Error")
+//     },10)
+// }catch(err){
+// console.log("err", err.message)
+// }
+//here we cannot catch the error because the async function setTimeout will run on task queue and try catch block runs in callstack
+// at the time error throws the try catch block already exicuted and removed from callstack
+
+function A(){
+    console.log("HI") // goes to callstack
+    console.log(100*3) // goes to callstack
+    setTimeout(()=>{
+        console.log("timeout") // goes to task queue
+    },10)
+    console.log(30*3) // goes to callstack
+    new Promise(()=>{
+        setTimeout(()=>{
+            console.log("Promise") 
+            return "Promise"
+        },50)
+    }).then(res=>{
+        console.log(res)
+    })
+}
+
+A()
