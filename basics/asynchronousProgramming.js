@@ -252,3 +252,29 @@ function A(){
 }
 
 A()
+
+//* Asynchronous bugs
+
+async function delay(time) {
+    return new Promise(res=>{
+         setTimeout(()=>{
+             res()
+         },time*1000)
+     })
+ 
+ }
+
+async function fileSizes(files) {
+    let list = "";
+    await Promise.all(files.map(async (fileName,index) => {
+    list += fileName + ": " +
+    (await delay(index+1)) + "\n";
+    }));
+    return list;
+}
+
+console.log(fileSizes(["a","b","c"]))
+
+/*
+Here the async function reference to the bindings 
+*/
