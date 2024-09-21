@@ -20,3 +20,10 @@ export function xyz(){
 }
 export default Variable2
 
+/*
+*Packages 
+To use a peice programe in other programe we can duplicate the code or import 
+Package is a peice of project where we can have all our utils with their depencies so that we can upgrade them at single place
+to distribute the package in large base there is a service where we can uplaod and download called Npm 
+Npm also comes as a module along with nodeJs to esaily downlaod, install and update the packages with cli
+*/  
