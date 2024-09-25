@@ -57,3 +57,24 @@ console.log("🚀 ~ datetimeregex:", datetimeregex.test("1-30-2003 8:45"))
 let word = 'Boohoooohoohooo'
 let wordRegex = /bo+(ho+)+/i
 console.log("🚀 ~ wordRegex:", wordRegex.test(word))
+
+//* Matches and Groups
+// Excute method in Regex
+// match method in string
+
+console.log("🚀 ~ exec on regex",  /\d+/.exec('one two 100'))
+console.log("🚀 ~ match on string",  'one two 100'.match(/\d+/))
+
+console.log((/bo+(ho+)+/i).exec('Boohoooohoohooo'))
+console.log('Boohoooohoohooo'.match(/bo+(ho+)+/i))
+
+console.log((/bo+(ho+)+(\d)/i).exec('Boohoooohoohooo2'))
+
+/*
+    firstmatch
+    group1
+    group2...etc
+    firstmathstartindex
+    input
+*/
+console.log(/(\d)/.exec("123"));
