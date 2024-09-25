@@ -52,3 +52,8 @@ console.log("🚀 ~ optionalRegex:", optionalRegex.test('nam'))
 datetimeregex = /\d{1,2}-\d{1,2}-\d{4} \d{1,2}:\d{1,2}/
 console.log("🚀 ~ datetimeregex:", datetimeregex.test("1-30-2003 8:45"))
 
+//* Grouping subexpressions
+
+let word = 'Boohoooohoohooo'
+let wordRegex = /bo+(ho+)+/i
+console.log("🚀 ~ wordRegex:", wordRegex.test(word))
