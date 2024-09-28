@@ -52,3 +52,30 @@ function sum(a,b){
 // for that cases if can return some special value like error happend
 //  (Error) ? {error true }:{value}
 // for this caller needs to check and handle again 
+
+/* Exception and handling  
+Exceptions are way to stop current programe with an expection reason 
+we can raise an expection using throw keyword and there is way to handle it called expection handling 
+when an error occured in function  it will like return the function till the bottom of the callstack where it get called intially 
+it will zoom in the call stack we can call it as like super return this process is called unwinding the stack
+using try catch we can stop that super return to zoom further down we can do it at any point 
+*/
+
+function raiseError(){
+    throw new Error("error occured")
+    //super return 
+}
+
+function dowork(){
+    try{
+        raiseError()
+    }catch(err){
+        console.log(err.message)
+        console.log(err.stack)
+        // stack holds the stack trace (the functions that involved)
+    }
+    // super return 
+}
+
+// we can raise error with anything , we can use error constructor
+dowork()
