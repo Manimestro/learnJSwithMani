@@ -78,4 +78,29 @@ function dowork(){
 }
 
 // we can raise error with anything , we can use error constructor
-dowork()
+// dowork()
+
+//* Cleaning up after exceptions
+/*
+ the expections can be handled to not to break the programe 
+ but the programe may go uncontrol by missing the control flow 
+ it casuses the side effects by doing some mutations  and after expection we need to revert those side effects or mutations
+ like removing money from a person bank account and exception raised while adding to to other account after handling that 
+ we have to add the money back to prev (this we can do in finally block )
+ finally block will excute after try but it wont stop the stack unwinding(only catch block can )
+ but it will run to do clean ups 
+*/
+function askTowork(){
+    try{
+        console.log("error")
+        raiseError()
+  
+    }catch(err){
+        console.log("catch")
+    }
+    finally{
+        console.log("finally")
+    }
+}
+
+askTowork()
