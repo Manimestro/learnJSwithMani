@@ -104,3 +104,28 @@ function askTowork(){
 }
 
 askTowork()
+
+//! Selective Error Handling 
+
+// catching the error by selectively will address it accordingly 
+// unlike python js doesnt provide inbuilt support for it
+class NameError extends Error {}
+
+let listOfNames = []
+function findName(name){
+    try{
+        if (name?.toLowerCase ===undefined){
+            throw new NameError("Name Error")
+        }
+        e
+    }catch(err){
+        if(err instanceof NameError){
+            console.log("Type error")
+        }else{
+            throw err
+        }
+    }
+
+}
+
+findName(1)
