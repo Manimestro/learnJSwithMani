@@ -129,3 +129,8 @@ function findName(name){
 }
 
 findName(1)
+
+//! Assertions
+
+// Assertions are the way to check whether eveything working fine and if not throwing errors
+// They are used not to handle situations that can come up in normal operation but to find programmer mistakes.
